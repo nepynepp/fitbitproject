@@ -1,27 +1,13 @@
 extends layout
 
 block content
+    a(class='button', href='/step') Step
     script(src='https://npmcdn.com/axios/dist/axios.min.js')
     script.
-        Date.prototype.yyyymmdd = function () {
-            var yyyy = this.getFullYear().toString();
-            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
-            var dd = this.getDate().toString();
-            return yyyy +'-'+ (mm[1] ? mm : "0" + mm[0]) +'-'+ (dd[1] ? dd : "0" + dd[0]); // padding
-        };
 
-        function prepareParameters(){
-            var d = new Date();
-            var today = d.yyyymmdd();
-            var params = document.location.href.split("#")[1].split("&");
-            return {today:today, params: params};
-        }
-
-        function getActivityToday(){
-            var p = prepareParameters();
+        function saveCrednetial(){
             var user_id = '';
             var token = '';
-            var today = p.today;
             p.params.forEach(function (e) {
                 if ((e.split("="))[0] == 'user_id') {
                     user_id = e.split("=")[1];
@@ -31,15 +17,6 @@ block content
                 }
             });
 
-            axios.get('https://api.fitbit.com/1/user/' + user_id + '/activities/date/' + today + '.json',
-                    {headers: {'Authorization': 'Bearer ' + token}})
-                    .then(function (response) {
-                        console.log('activities',response.data.activities);
-                        console.log('goals',response.data.goals);
-                    })
-                    .catch(function (response) {
-                        console.log(response);
-                    });
             axios.post('/oauth2/saveCredentials',{token:token,user_id:user_id})
                     .then(function (response) {
                         console.log(response.data.message);
@@ -49,4 +26,4 @@ block content
                     });
         }
 
-        getActivityToday();
+        saveCrednetial();
