@@ -25,7 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
   secret: 'asdfgh',
-  cookie: { maxAge: 60000,secure: true },
   resave: false,
   saveUninitialized: true
 }));

@@ -8,6 +8,7 @@ router.get('/callback/:code', function(req, res, next) {
 router.post('/saveCredentials',function(req,res,next){
   req.session.token = req.body.token;
   req.session.user_id = req.body.user_id;
+  req.session.save();
   return res.json({message:'save credential success'});
 });
 
