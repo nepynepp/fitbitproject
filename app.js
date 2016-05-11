@@ -8,7 +8,7 @@ var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var oauth2 = require('./routes/oauth');
+var oauth2 = require('./routes/oauth2');
 
 var app = express();
 
@@ -22,7 +22,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: 'asdfgh', cookie: { maxAge: 60000 }}));
+app.use(session({
+  secret: 'asdfgh',
+  cookie: { maxAge: 60000,secure: true },
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
