@@ -10,7 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var oauth2 = require('./routes/oauth2');
 var activity = require('./routes/activity');
-
+var step = require('./routes/step');
 var app = express();
 
 // view engine setup
@@ -34,6 +34,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/oauth2',oauth2);
 app.use('/activity',activity);
+app.use('/step',step);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
