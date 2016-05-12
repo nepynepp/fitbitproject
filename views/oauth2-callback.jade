@@ -22,7 +22,7 @@ block content
             var d = new Date();
             var today = d.yyyymmdd();
             $('a').each(function () {
-                this.href = this.href.append(today);
+                this.href = this.href+(today);
             });
         }
 
