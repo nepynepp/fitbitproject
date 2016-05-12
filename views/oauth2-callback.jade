@@ -13,6 +13,17 @@ block content
     script(src='https://npmcdn.com/axios/dist/axios.min.js')
     script.
 
+        function prepareParameters() {
+            var d = new Date();
+            var today = d.yyyymmdd();
+            var params = document.location.href.split("#")[1].split("&");
+            return {today: today, params: params};
+        }
+
+        function getActivityToday() {
+            var p = prepareParameters();
+        }
+
         function saveCrednetial(){
             var user_id = '';
             var token = '';
