@@ -54,7 +54,7 @@
             <div class="col-lg-12">
                 <img class="img-responsive" src="img/logo.png">
                 <div class="intro-text">
-                    <form method="POST" action="https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227MCZ&redirect_uri=http://fittest.azurewebsites.net/oauth2/callback/code&scope=activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight">
+                    <form onsubmit="event.preventDefault(); poptastic('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227MCZ&redirect_uri=http://fittest.azurewebsites.net/oauth2/callback/code&scope=activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight');">
                         <h1><input type="submit" class="btn btn-danger" value="Log in"></h1>
                     </form>
                     <span class="skills">Click Login Here!!!</span>
@@ -64,5 +64,14 @@
     </div>
 </header>
 
-</body>
+<script>
+    function poptastic(url) {
+        var newWindow = window.open(url, 'name', 'height=600,width=450');
+        if (window.focus) {
+            newWindow.focus();
+        }
+    }
+
+</script>
+
 </html>
