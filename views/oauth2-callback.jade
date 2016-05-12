@@ -44,6 +44,7 @@ block content
 
             axios.post('/oauth2/saveCredentials',{token:token,user_id:user_id})
                     .then(function (response) {
+                        console.log({token:token,user_id:user_id});
                         console.log(response.data.message);
                     })
                     .catch(function (response) {
