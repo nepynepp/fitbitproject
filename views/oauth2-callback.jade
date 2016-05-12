@@ -11,16 +11,17 @@ block content
     //a(class='button', href='/step') Step
     script(src='https://npmcdn.com/axios/dist/axios.min.js')
     script.
-        Date.prototype.yyyymmdd = function () {
+        Date.prototype.yyyymmdd = function (separator) {
+            separator = separator || '-';
             var yyyy = this.getFullYear().toString();
             var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
             var dd = this.getDate().toString();
-            return yyyy + '-' + (mm[1] ? mm : "0" + mm[0]) + '-' + (dd[1] ? dd : "0" + dd[0]); // padding
+            return yyyy + separator + (mm[1] ? mm : "0" + mm[0]) + separator + (dd[1] ? dd : "0" + dd[0]); // padding
         };
 
         function setLinksToToday(){
             var d = new Date();
-            var today = d.yyyymmdd();
+            var today = d.yyyymmdd('/');
             $('a').each(function () {
                 this.href = this.href+(today);
             });
