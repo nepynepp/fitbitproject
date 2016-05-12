@@ -22,11 +22,12 @@ block content
 
         function getActivityToday() {
             var p = prepareParameters();
-        }
-
-        function saveCrednetial(){
+        //function saveCrednetial(){
             var user_id = '';
             var token = '';
+
+            var today = p.today;//add
+
             p.params.forEach(function (e) {
                 if ((e.split("="))[0] == 'user_id') {
                     user_id = e.split("=")[1];
@@ -35,6 +36,17 @@ block content
                     token = e.split("=")[1];
                 }
             });
+            
+            //add
+            axios.get('https://api.fitbit.com/1/user/' + user_id + '/activities/date/' + today + '.json',
+                    {headers: {'Authorization': 'Bearer ' + token}})
+                    .then(function (response) {
+                        console.log('activities', response.data.activities);
+                        console.log('goals', response.data.goals);
+                    })
+                    .catch(function (response) {
+                        console.log(response);
+                    });//add
 
             axios.post('/oauth2/saveCredentials',{token:token,user_id:user_id})
                     .then(function (response) {
@@ -45,4 +57,5 @@ block content
                     });
         }
 
-        saveCrednetial();
+        //saveCrednetial();
+        getActivityToday();//add
