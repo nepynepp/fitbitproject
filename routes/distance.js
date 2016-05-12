@@ -11,7 +11,7 @@ router.get('/:year/:month/:day', function(req, res, next) {
     axios.get('https://api.fitbit.com/1/user/' + user_id + '/activities/date/' + date + '.json',
         {headers: {'Authorization': 'Bearer ' + token}})
         .then(function (response) {
-            return res.render('distance', {distance:response.data.goals.distance})
+            return res.render('distance', {distance:response.data.summary.distance})
 
         })
         .catch(function (response) {

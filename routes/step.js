@@ -12,7 +12,7 @@ router.get('/:year/:month/:day', function(req, res, next) {
         {headers: {'Authorization': 'Bearer ' + token}})
         .then(function (response) {
             console.log(response.data.goals.steps)
-            return res.render('step', {step:response.data.goals.steps})
+            return res.render('step', {step:response.data.summary.steps})
 
         })
         .catch(function (response) {
