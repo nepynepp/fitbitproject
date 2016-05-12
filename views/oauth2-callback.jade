@@ -1,13 +1,12 @@
 extends layout
 
 block content
-    ul
-        li(class=(title === 'Step' ? 'active' : ''))
-            a(href='/step/2016/5/12') Step
-        li(class=(title === 'Distance' ? 'active' : ''))
-            a(href='/distance/2016/5/12') Distance
-        li(class=(title === 'CaloriesOut' ? 'active' : ''))
-            a(href='/caloriesOut/2016/5/12') CaloriesOut
+
+    ul(style='width: '+(100/4)+'%').list-group
+        a.li.list-group-item.active Fitbit
+        a.li.list-group-item( href="/step/2016/5/12" ) Step
+        a.li.list-group-item( href="/distance/2016/5/12" ) Distance
+        a.li.list-group-item( href="/caloriesOut/2016/5/12" ) Calories out
 
     //a(class='button', href='/step') Step
     script(src='https://npmcdn.com/axios/dist/axios.min.js')
