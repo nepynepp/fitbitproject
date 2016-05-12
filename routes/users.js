@@ -6,5 +6,8 @@ router.get('/', function(req, res, next) {
   console.log(req.session);
   res.send(req.session.user_id);
 });
-
+router.get('/logout', function(req, res, next) {
+  req.session.destroy();
+  res.send("Success");
+});
 module.exports = router;
