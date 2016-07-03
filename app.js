@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+const config=require('./config');
+var mongoose = require('mongoose');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var oauth2 = require('./routes/oauth2');
@@ -72,3 +75,11 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+//DB connection
+mongoose.connect(config.dataSource);
+let db = mongoose.connection;
+db.on('error',console.error.bind(console,'mongodb connection error:'));
+db.once('open', () => {
+  console.log('[+] mongoose connected');
+});
