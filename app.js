@@ -16,6 +16,7 @@ var activity = require('./routes/activity');
 var step = require('./routes/step');
 var distance = require('./routes/distance');
 var caloriesOut = require('./routes/caloriesOut');
+const adminBoot=require('./boot/admin.boot');
 var app = express();
 
 // view engine setup
@@ -82,4 +83,7 @@ let db = mongoose.connection;
 db.on('error',console.error.bind(console,'mongodb connection error:'));
 db.once('open', () => {
   console.log('[+] mongoose connected');
+  adminBoot();
 });
+
+
