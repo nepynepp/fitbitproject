@@ -7,10 +7,7 @@ router.get('/', function(req, res, next) {
   res.send(req.session.user_id);
 });
 router.get('/logout', function(req, res, next) {
-  req.session.destroy(function(err){
-    if(err) res.send(err);
-    res.send("Success");
-  });
-
+  req.session.destroy();
+  res.send("Success");
 });
 module.exports = router;
