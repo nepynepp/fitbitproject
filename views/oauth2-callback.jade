@@ -3,10 +3,10 @@ extends layout
 block content
 
     ul(style='width: '+(100/4)+'%').list-group
-        a.li.list-group-item.active Fitbit
-        a.li.list-group-item( href="/step/" ) Step
-        a.li.list-group-item( href="/distance/" ) Distance
-        a.li.list-group-item( href="/caloriesOut/" ) Calories out
+        a.addDate.li.list-group-item.active Fitbit
+        a.addDate.li.list-group-item( href="/step/" ) Step
+        a.addDate.li.list-group-item( href="/distance/" ) Distance
+        a.addDate.li.list-group-item( href="/caloriesOut/" ) Calories out
         a.li.list-group-item( href="/profile" ) Profile
 
     //a(class='button', href='/step') Step
@@ -23,7 +23,7 @@ block content
         function setLinksToToday(){
             var d = new Date();
             var today = d.yyyymmdd('/');
-            $('a').each(function () {
+            $('.addDate').each(function () {
                 this.href = this.href+(today);
             });
         }
@@ -36,7 +36,7 @@ block content
         }
 
         //function getActivityToday() {
-          //  var p = prepareParameters();
+        //  var p = prepareParameters();
         function saveCrednetial(){
             var p = prepareParameters();
             var user_id = '';
