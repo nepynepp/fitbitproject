@@ -6,8 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-const config=require('./config');
-var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -17,7 +15,7 @@ var step = require('./routes/step');
 var distance = require('./routes/distance');
 var profile = require('./routes/profile');
 var caloriesOut = require('./routes/caloriesOut');
-const adminBoot=require('./boot/admin.boot');
+//const adminBoot=require('./boot/admin.boot');
 var app = express();
 
 // view engine setup
@@ -78,14 +76,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
-//DB connection
-mongoose.connect(config.dataSource);
-let db = mongoose.connection;
-db.on('error',console.error.bind(console,'mongodb connection error:'));
-db.once('open', () => {
-  console.log('[+] mongoose connected');
-  adminBoot();
-});
-
 
