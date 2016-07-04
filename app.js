@@ -15,6 +15,7 @@ var oauth2 = require('./routes/oauth2');
 var activity = require('./routes/activity');
 var step = require('./routes/step');
 var distance = require('./routes/distance');
+var profile = require('./routes/profile');
 var caloriesOut = require('./routes/caloriesOut');
 const adminBoot=require('./boot/admin.boot');
 var app = express();
@@ -43,6 +44,7 @@ app.use('/activity',activity);
 app.use('/step',step);
 app.use('/distance',distance);
 app.use('/caloriesOut',caloriesOut);
+app.use('/profile',profile);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
